@@ -3,10 +3,19 @@
  * and open the template in the editor.
  */
 package nuvem_tags;
+import java.awt.RenderingHints.Key;
+import java.awt.*;
 import pacote.*;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Label;
+import java.awt.font.FontRenderContext;
+import java.awt.font.GlyphVector;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
+import java.awt.image.ImageObserver;
+import java.awt.image.RenderedImage;
+import java.awt.image.renderable.RenderableImage;
+import java.text.AttributedCharacterIterator;
+import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,9 +41,14 @@ public class NewJFrame extends javax.swing.JFrame {
         
         temp.setText(tempPalavra.getConteudo());
         
-        temp.setSize(100*tempPalavra.getNoccurencias(), 100*tempPalavra.getNoccurencias());
+        // temp.setSize(100*tempPalavra.getNoccurencias(), 100*tempPalavra.getNoccurencias());
+         Font font1 = new Font("Helvetica", Font.PLAIN,  tempPalavra.getNoccurencias()*10);
         
-        temp.setLocation((int)(Math.random()*getHeight()-20) , (int)(Math.random()*this.getWidth()-80));
+         temp.setFont(font1);
+        
+                
+        temp.setLocation((int)(Math.random()*getHeight()) , (int)(Math.random()*this.getWidth()));
+        
         this.getContentPane().add(temp);
         }
     }
@@ -116,7 +130,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
             public void run() {
                 new NewJFrame().setVisible(true);
-               
+                
                
             }
         });
