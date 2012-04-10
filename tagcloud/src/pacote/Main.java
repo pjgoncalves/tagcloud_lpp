@@ -3,6 +3,7 @@ package pacote;
 import java.io.IOException;
 import java.util.*;
 import javax.swing.JOptionPane;
+import nuvem_tags.Palavra;
 
 public class Main {
 
@@ -14,12 +15,14 @@ public class Main {
         
     }
     
+    ArrayList<Palavra> x = new ArrayList<Palavra>();
     
     // imprime a arvore
-    public void imprime( No a ){
+    public ArrayList<Palavra> imprime( No a , ArrayList<Palavra> x ){
+        
         if( a != null ){
-            
-            imprime( a.getEsquerda() );
+        Palavra tempWord = new Palavra();    
+            imprime( a.getEsquerda(), x );
             String temp="";
             int total;
             
@@ -31,10 +34,20 @@ public class Main {
                  
             }
             System.out.printf("%-15s %-10d %s %n",a.getPalavra(),a.getOcurr().length,temp);
+           
+            // parse da palavra e num. de ocurrencias
+            tempWord.setConteudo(a.getPalavra());
+            tempWord.setNoccurencias(a.getOcurr().length);
+            // adiciono o no a lista, para usar no heap
+            x.add(tempWord);
             
             temp = "";
-            imprime( a.getDireita() );
+            tempWord = null;
+            imprime( a.getDireita(), x );
         }
+        // retorno da lista de palavras e respectivas ocurrencias,
+        // a lista será em seguida ordenada por num. de occurencias.
+        return x;
     }
     
     
@@ -83,8 +96,7 @@ public class Main {
             }
         }
     }
-    
-    
+   
     
     public void exec() throws IOException{
         
@@ -148,7 +160,7 @@ public class Main {
         // cabeçalho de impressao
         System.out.printf("%-10s %-10s %10s %n","PALAVRA","OCORRENCIAS","LINHAS");
         
-        imprime(raiz);
+        imprime(raiz, x);
         
     }
 

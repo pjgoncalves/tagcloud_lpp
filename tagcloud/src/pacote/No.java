@@ -31,8 +31,8 @@ public class No {
     
     
     public String getPalavra() {
-        return palavra;
-    }
+        return palavra; 
+   }
 
 
     public void setPalavra(String palavra) {
