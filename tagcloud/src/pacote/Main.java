@@ -11,7 +11,7 @@ import processing.core.*;
 public class Main {
 
     public No raiz = null;
-    List<Palavra> x = new ArrayList<Palavra>();
+    public List<Palavra> heapPalavras = new ArrayList<Palavra>();
     
     
 
@@ -170,13 +170,13 @@ public class Main {
         // cabeçalho de impressao
         System.out.printf("%-10s %-10s %10s %n","PALAVRA","OCORRENCIAS","LINHAS");
         
-        imprime(raiz, x);
+        imprime(raiz, getHeapPalavras());
         sortLista();
     }
 
     
 
-    public  static Comparator<Palavra> COMPARATOR = new Comparator<Palavra>()
+    public Comparator<Palavra> COMPARATOR = new Comparator<Palavra>()
     {
         public int compare(Palavra o1, Palavra o2)
         {
@@ -188,19 +188,27 @@ public class Main {
    };
     
     
-   public void sortLista(){
-   Collections.sort(x, COMPARATOR);
+    public void sortLista(){
+   Collections.sort(getHeapPalavras(), COMPARATOR);
    
-   for(Palavra temp : x){
+   for(Palavra temp : getHeapPalavras()){
    
        System.out.println(":: " + temp.getConteudo() + " " + temp.getNoccurencias());
    
    }
    
    }
-    
+
+    /**
+     * @return the heapPalavras
+     */
+    public List<Palavra> getHeapPalavras() {
+        return heapPalavras;
+    }
+
    
    
  
+    
     
 }
