@@ -28,8 +28,13 @@ public class NewJFrame extends javax.swing.JFrame {
         
         for(Palavra tempPalavra : Main.getHeapPalavras())
         {
-        Label temp = new Label("text");
-        temp.setLocation(45, 54);
+        Label temp = new Label(null);
+        
+        temp.setText(tempPalavra.getConteudo());
+        
+        temp.setSize(100*tempPalavra.getNoccurencias(), 100*tempPalavra.getNoccurencias());
+        
+        temp.setLocation((int)(Math.random()*getHeight()-20) , (int)(Math.random()*this.getWidth()-80));
         this.getContentPane().add(temp);
         }
     }

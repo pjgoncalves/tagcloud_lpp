@@ -5,20 +5,21 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import java.util.Collections;
 import java.util.Comparator;
+import nuvem_tags.NewJFrame;
 import nuvem_tags.Palavra;
-import processing.core.*;
+
 
 public class Main {
 
     public No raiz = null;
-    public List<Palavra> heapPalavras = new ArrayList<Palavra>();
+    public static List<Palavra> heapPalavras = new ArrayList<Palavra>();
     
     
 
     
     public static void main(String[] args) throws IOException {
        new Main().exec();
-        
+       new NewJFrame().setVisible(true);
     }
     
  
@@ -202,7 +203,7 @@ public class Main {
     /**
      * @return the heapPalavras
      */
-    public List<Palavra> getHeapPalavras() {
+    public static List<Palavra> getHeapPalavras() {
         return heapPalavras;
     }
 
