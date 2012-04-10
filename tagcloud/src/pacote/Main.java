@@ -3,22 +3,30 @@ package pacote;
 import java.io.IOException;
 import java.util.*;
 import javax.swing.JOptionPane;
+import java.util.Collections;
+import java.util.Comparator;
 import nuvem_tags.Palavra;
+import processing.core.*;
 
 public class Main {
 
-        public No raiz = null;
-        
-        
+    public No raiz = null;
+    List<Palavra> x = new ArrayList<Palavra>();
+    
+    
+
+    
     public static void main(String[] args) throws IOException {
        new Main().exec();
         
     }
     
-    ArrayList<Palavra> x = new ArrayList<Palavra>();
+ 
+    
+    
     
     // imprime a arvore
-    public ArrayList<Palavra> imprime( No a , ArrayList<Palavra> x ){
+    public List<Palavra> imprime( No a , List<Palavra> x ){
         
         if( a != null ){
         Palavra tempWord = new Palavra();    
@@ -47,6 +55,8 @@ public class Main {
         }
         // retorno da lista de palavras e respectivas ocurrencias,
         // a lista ser‡ em seguida ordenada por num. de occurencias.
+        
+        
         return x;
     }
     
@@ -161,7 +171,36 @@ public class Main {
         System.out.printf("%-10s %-10s %10s %n","PALAVRA","OCORRENCIAS","LINHAS");
         
         imprime(raiz, x);
-        
+        sortLista();
     }
 
+    
+
+    public  static Comparator<Palavra> COMPARATOR = new Comparator<Palavra>()
+    {
+        public int compare(Palavra o1, Palavra o2)
+        {
+            return o1.getNoccurencias() - o2.getNoccurencias();
+
+        }
+
+   
+   };
+    
+    
+   public void sortLista(){
+   Collections.sort(x, COMPARATOR);
+   
+   for(Palavra temp : x){
+   
+       System.out.println(":: " + temp.getConteudo() + " " + temp.getNoccurencias());
+   
+   }
+   
+   }
+    
+   
+   
+ 
+    
 }
