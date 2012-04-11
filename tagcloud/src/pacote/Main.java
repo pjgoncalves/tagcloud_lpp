@@ -1,10 +1,12 @@
 package pacote;
 
+import java.awt.Dimension;
 import java.io.IOException;
 import java.util.*;
 import javax.swing.JOptionPane;
 import java.util.Collections;
 import java.util.Comparator;
+import javax.swing.JFrame;
 import nuvem_tags.NewJFrame;
 import nuvem_tags.Palavra;
 
@@ -22,11 +24,13 @@ public class Main {
     
     public static void main(String[] args) throws IOException {
        new Main().exec();
-       new NewJFrame().setVisible(true);
+      JFrame janela = new NewJFrame();
+      
+      // http://www.devdaily.com/java/java-set-jframe-size
+      janela.setPreferredSize(new Dimension(500, 500));
+      janela.pack();
+      janela.setVisible(true);
     }
-    
- 
-    
     
     
     // imprime a arvore
@@ -180,20 +184,20 @@ public class Main {
 
     
 
-    public Comparator<Palavra> COMPARATOR = new Comparator<Palavra>()
+    public Comparator<Palavra> COMPARADOR = new Comparator<Palavra>()
     {
         public int compare(Palavra o1, Palavra o2)
         {
-            return o1.getNoccurencias() - o2.getNoccurencias();
+            return o2.getNoccurencias() - o1.getNoccurencias();
 
         }
 
    
    };
     
-    
+    // metodo que organiza a nova lista num heap implicito.
     public void sortLista(){
-   Collections.sort(getHeapPalavras(), COMPARATOR);
+   Collections.sort(getHeapPalavras(), COMPARADOR);
    
    for(Palavra temp : getHeapPalavras()){
    
@@ -203,16 +207,11 @@ public class Main {
    
    }
 
-    /**
-     * @return the heapPalavras
-     */
+    
     public static List<Palavra> getHeapPalavras() {
         return heapPalavras;
     }
 
-   
-   
- 
     
     
 }

@@ -5,6 +5,7 @@
 package nuvem_tags;
 
 import java.awt.*;
+import javax.swing.JFrame;
 import pacote.*;
 
 /**
@@ -12,32 +13,26 @@ import pacote.*;
  * @author pedrogoncalves
  */
 public class NewJFrame extends javax.swing.JFrame {
-
+ 
     /**
      * Creates new form NewJFrame
      */
     public NewJFrame() {
-        initComponents();
         
-        
-        
+        initComponents();  
         
         for(Palavra tempPalavra : Main.getHeapPalavras())
         {
         Label temp = new Label(null);
-        
         temp.setText(tempPalavra.getConteudo());
         
-        // n‹o funcionava como pretendido para aumentar o tamanho do texto
-        // temp.setSize(100*tempPalavra.getNoccurencias(), 100*tempPalavra.getNoccurencias());
         
         // http://javaboutique.internet.com/tutorials/Java_by_Example/section3_1.html
         Font font1 = new Font("Helvetica", Font.PLAIN,  tempPalavra.getNoccurencias()*12);
-        
         temp.setFont(font1);
         
-        this.setSize(500, 500);
-        temp.setLocation((int)(Math.random()*getHeight()) + 50 , (int)(Math.random()*this.getWidth()) + 50);
+        
+        temp.setLocation((int)(Math.random()*getHeight()) + 10 , (int)(Math.random()*this.getWidth()) + 10);
         
         this.getContentPane().add(temp);
         }
@@ -81,7 +76,7 @@ public class NewJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
+    /*
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -119,9 +114,9 @@ public class NewJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new NewJFrame().setVisible(true);
                 
-               
+                JFrame a = new JFrame();
+                
             }
         });
     }
