@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import java.util.Collections;
 import java.util.Comparator;
 import javax.swing.JFrame;
+import nuvem_tags.NewApplet;
 import nuvem_tags.NewJFrame;
 import nuvem_tags.Palavra;
 
@@ -24,12 +25,8 @@ public class Main {
     
     public static void main(String[] args) throws IOException {
        new Main().exec();
-      JFrame janela = new NewJFrame();
-      
-      // http://www.devdaily.com/java/java-set-jframe-size
-      janela.setPreferredSize(new Dimension(500, 500));
-      janela.pack();
-      janela.setVisible(true);
+     
+       new NewApplet().setVisible(true);
     }
     
     
