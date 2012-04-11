@@ -12,6 +12,9 @@ import nuvem_tags.Palavra;
 public class Main {
 
     public No raiz = null;
+    
+    
+    // lista a ser transformada num heap, ordenado por 'noccurencias'
     public static List<Palavra> heapPalavras = new ArrayList<Palavra>();
     
     

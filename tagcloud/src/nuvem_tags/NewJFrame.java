@@ -3,22 +3,9 @@
  * and open the template in the editor.
  */
 package nuvem_tags;
-import java.awt.RenderingHints.Key;
+
 import java.awt.*;
 import pacote.*;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ImageObserver;
-import java.awt.image.RenderedImage;
-import java.awt.image.renderable.RenderableImage;
-import java.text.AttributedCharacterIterator;
-import java.util.Map;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  *
@@ -41,13 +28,16 @@ public class NewJFrame extends javax.swing.JFrame {
         
         temp.setText(tempPalavra.getConteudo());
         
+        // n‹o funcionava como pretendido para aumentar o tamanho do texto
         // temp.setSize(100*tempPalavra.getNoccurencias(), 100*tempPalavra.getNoccurencias());
-         Font font1 = new Font("Helvetica", Font.PLAIN,  tempPalavra.getNoccurencias()*10);
         
-         temp.setFont(font1);
+        // http://javaboutique.internet.com/tutorials/Java_by_Example/section3_1.html
+        Font font1 = new Font("Helvetica", Font.PLAIN,  tempPalavra.getNoccurencias()*12);
         
-                
-        temp.setLocation((int)(Math.random()*getHeight()) , (int)(Math.random()*this.getWidth()));
+        temp.setFont(font1);
+        
+        this.setSize(500, 500);
+        temp.setLocation((int)(Math.random()*getHeight()) + 50 , (int)(Math.random()*this.getWidth()) + 50);
         
         this.getContentPane().add(temp);
         }
